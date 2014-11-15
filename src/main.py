@@ -3,31 +3,27 @@ from flask import Flask, jsonify, abort
 
 app = Flask(__name__)
 
-tasks = [
+initInfo = {
+    'statusInfo': {
+        'status': u'ok',
+        'errorCode': 0
+    },
+    'results': [
     {
-        'id': 1,
-        'title': u'Buy groceries',
-        'description': u'Milk, Cheese, Pizza, Fruit, Tylenol', 
-        'done': False
+        'state': u'California',
+        'abbreviation':u'CA',
+        'subarea':u'SF,LA,SouthBay'
     },
     {
-        'id': 2,
-        'title': u'Learn Python',
-        'description': u'Need to find a good Python tutorial on the web', 
-        'done': False
-    }
-]
+        'state': u'Minneosta',
+        'abbreviation':u'MN',
+        'subarea':u'Minneapolis,Duluth'
+    }]
+}
 
-@app.route('/todo/api/v1.0/tasks', methods=['GET'])
-def get_tasks():
-    return jsonify({'tasks': tasks})
-
-@app.route('/todo/api/v1.0/tasks/<int:task_id>', methods=['GET'])
-def get_task(task_id):
-    task = filter(lambda t: t['id'] == task_id, tasks)
-    if len(tasks) == 0:
-        abort(404)
-    return jsonify({'task': tasks[0]})
+@app.route('/api/init', methods=['GET'])
+def init():
+    return jsonify({'init': initInfo})
 
 if __name__ == '__main__':
     app.run(debug=True)
