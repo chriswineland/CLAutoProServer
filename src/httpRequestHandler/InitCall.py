@@ -2,37 +2,69 @@ __author__ = 'Steve'
 from webScraper.InitScrape import get_init_scrape
 
 mockInitInfo1 = {
-    'statusInfo': {
-        'status': u'ok',
-        'errorCode': 0
+    'status_info': {
+        'status': "successful",
+        'status_code': 200
     },
-    'results': [
-    {
-        'state': u'California',
-        'abbreviation': u'CA',
-        'subarea': u'SF,LA,SouthBay'
-    },
-    {
-        'state': u'Minnesota',
-        'abbreviation': u'MN',
-        'subarea': u'Minneapolis,Duluth'
-    }]
+    'region0': {
+        'region_id': "US",
+        'region_name': "US",
+        'subregion0': {
+            'subdomain0': {
+                'subdomain_link': "http://auburn.craigslist.org",
+                'subdomain_title': "auburn"
+            },
+            'subdomain1': {
+                'subdomain_link': "http://bham.craigslist.org",
+                'subdomain_title': "birmingham"
+            },
+            'subdomain2': {
+                'subdomain_link': "http://dothan.craigslist.org",
+                'subdomain_title': "dothan"
+            },
+            'subdomain3': {
+                'subdomain_link': "http://shoals.craigslist.org",
+                'subdomain_title': "florence / muscle shoals"
+            },
+            'subdomain4': {
+                'subdomain_link': "http://gadsden.craigslist.org",
+                'subdomain_title': "gadsden-anniston"
+            },
+            'subdomain5': {
+                'subdomain_link': "http://huntsville.craigslist.org",
+                'subdomain_title': "huntsville / decatur"
+            },
+            'subdomain6': {
+                'subdomain_link': "http://mobile.craigslist.org",
+                'subdomain_title': "mobile"
+            },
+            'subdomain7': {
+                'subdomain_link': "http://montgomery.craigslist.org",
+                'subdomain_title': "montgomery"
+            },
+            'subdomain8': {
+                'subdomain_link': "http://tuscaloosa.craigslist.org",
+                'subdomain_title': "tuscaloosa"
+            },
+            'subregion_name': "Alabama"
+        }
+    }
 }
 
 mockInitInfo2 = {
-    'statusInfo': {
-        'status': u'error',
-        'errorCode': 400
+    'status_info': {
+        'status': "error: mock",
+        'status_code': 500
     },
-    'results': []
+    'results': {}
 }
 
 error = {
-    'statusInfo': {
-        'status': u'error',
+    'status_info': {
+        'status': "error: out_of_bounds_mock_value",
         'errorCode': 500
     },
-    'results': []
+    'results': {}
 }
 
 
@@ -52,4 +84,3 @@ class InitCall(object):
             return mockInitInfo2
         global error
         return error
-
