@@ -6,10 +6,10 @@ app = Flask(__name__)
 
 httpRequestHandler = RequestHandler.RequestHandler()
 
-@app.route('/api/init', methods=['GET'])
-def init():
+@app.route('/api/init/<int:mock>', methods=['GET'])
+def init(mock):
     global httpRequestHandler
-    return jsonify(httpRequestHandler.handle_init(2))
+    return jsonify(httpRequestHandler.handle_init(mock))
 
 @app.errorhandler(404)
 def not_found(error):
